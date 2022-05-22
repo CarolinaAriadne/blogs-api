@@ -1,5 +1,5 @@
 const { User } = require('../database/models');
-const token = require('../utils/generateJWT');
+const generateJWT = require('../utils/generateJWT');
 
 const erroHandler = (status, message) => ({
     status,
@@ -7,13 +7,14 @@ const erroHandler = (status, message) => ({
 });
 
 const getUser = async (email, password) => {
-    const tokenDone = token(email);
     const user = await User.findOne({ where: { email, password } });
+    console.log(user, 'user service');
 
     if (!user) {
         throw erroHandler(400, 'Invalid fields'); 
     }
-    return tokenDone;
+    const returnToken = generateJWT.generateJWT(email);
+    return returnToken;
 };
 
 module.exports = {
