@@ -12,7 +12,7 @@ const userValidate = joi.object({
     
 });
 
-const validateUser = (req, res, next) => {
+const validateUserLogin = (req, res, next) => {
     const { email, password } = req.body;
     const { error } = userValidate.validate({ email, password });
 
@@ -22,4 +22,6 @@ const validateUser = (req, res, next) => {
     next();
 };
 
-module.exports = validateUser;
+module.exports = {
+    validateUserLogin,
+};
