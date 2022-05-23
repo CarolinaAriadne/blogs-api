@@ -16,6 +16,24 @@ const validateUserLogin = (req, res, next) => {
     next();
 };
 
+const nameValidate = joi.object({
+    namel: joi.string().required().messages({
+      'any.required': '"name" is required',
+    }),
+    
+});
+
+const verifyName = (req, res, next) => {
+    const { name } = req.body;
+    const { error } = nameValidate.validate({ name });
+
+    if (error) {
+        next({ status: 400, message: error.message });
+    }
+    next();
+};
+
 module.exports = {
     validateUserLogin,
+    verifyName,
 };
