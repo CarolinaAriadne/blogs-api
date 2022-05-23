@@ -8,7 +8,6 @@ const erroHandler = (status, message) => ({
 
 const getUser = async (email, password) => {
     const user = await User.findOne({ where: { email, password } });
-    console.log(user, 'user service');
 
     if (!user) {
         throw erroHandler(400, 'Invalid fields'); 
