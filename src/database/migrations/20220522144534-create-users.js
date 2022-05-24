@@ -7,28 +7,27 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
       },
       displayName: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       email: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       password: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       image: {
-        type: Sequelize.STRING
-      }
-    }
-    );
+        type: Sequelize.STRING,
+      },
+    });
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Users')
-  }
+    await queryInterface.dropTable('Users');
+  },
 };

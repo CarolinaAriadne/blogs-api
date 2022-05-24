@@ -7,16 +7,16 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
       },
       name: {
         type: Sequelize.STRING,
         allowNull: false,
-      }
+      },
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Categories')
-  }
+    await queryInterface.dropTable('Categories');
+  },
 };
