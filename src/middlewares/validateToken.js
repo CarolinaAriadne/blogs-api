@@ -1,20 +1,20 @@
-const joi = require('joi');
-
-const tokenSchema = joi.object({
-    token: joi.string().required().messages({
-        'any.required': 'Token not found',
-        'string.empty': 'Token not found',
-    }),
-});
+const jwt = require('jsonwebtoken');
 
 const verifyToken = (req, res, next) => {
-    const token = req.headers.authorization;
+   try {
+    const { authorization } = req.headers;
 
-    const { error } = tokenSchema.validate({ token });
+    if (!authorization) {
+        return res.status(401).json({ message: 'Token not found' });
+    }
 
-    if (error) next({ status: 401, message: error.message });
+    const decoded = jwt.verify(authorization, process.env.JWT_SECRET);
+    req.user = decoded.data;
 
     next();
+   } catch (err) {
+    return res.status(401).json({ message: 'Expired or invalid token' });
+   }
 };
 
 module.exports = {

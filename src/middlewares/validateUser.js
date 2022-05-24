@@ -17,18 +17,19 @@ const validateUserLogin = (req, res, next) => {
 };
 
 const nameValidate = joi.object({
-    namel: joi.string().required().messages({
+    name: joi.string().required().messages({
       'any.required': '"name" is required',
     }),
     
 });
 
-const verifyName = (req, res, next) => {
+const verifyName = (req, _res, next) => {
     const { name } = req.body;
+    console.log(req.body);
     const { error } = nameValidate.validate({ name });
 
     if (error) {
-        next({ status: 400, message: error.message });
+       return next({ status: 400, message: error.message });
     }
     next();
 };
