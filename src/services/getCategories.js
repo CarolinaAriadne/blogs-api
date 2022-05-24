@@ -10,5 +10,3 @@ const getCategories = async () => {
 module.exports = {
   getCategories,
 };
-
-// { attributes: { exclude: 'password' } }
