@@ -25,7 +25,6 @@ const nameValidate = joi.object({
 
 const verifyName = (req, _res, next) => {
     const { name } = req.body;
-    console.log(req.body);
     const { error } = nameValidate.validate({ name });
 
     if (error) {
