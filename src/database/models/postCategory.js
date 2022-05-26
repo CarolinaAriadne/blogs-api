@@ -1,3 +1,9 @@
+/**
+ * 
+ * @param {import('sequelize').Sequelize} sequelize 
+ * @param {import('sequelize').DataTypes} DataTypes 
+ */
+
 const PostCategory = (sequelize, DataTypes) => {
   const PostCategory = sequelize.define(
     "PostCategory",
@@ -19,13 +25,13 @@ const PostCategory = (sequelize, DataTypes) => {
     models.BlogPost.belongsToMany(models.Category, {
       as: "categories",
       through: PostCategory,
-      foreingKey: "postId",
+      foreignKey: "postId",
       otherKey: "categoryId",
     });
     models.Category.belongsToMany(models.BlogPost, {
       as: "posts",
       through: PostCategory,
-      foreingKey: "categoryId",
+      foreignKey: "categoryId",
       otherKey: "postId",
     });
   };
