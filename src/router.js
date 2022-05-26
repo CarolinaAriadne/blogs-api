@@ -25,6 +25,8 @@ const { getCategories } = require('./controllers/getCategories');
 
 const { newBlogPostController } = require('./controllers/newBlogPost');
 
+const { getPosts } = require('./controllers/getPosts');
+
 router.post('/login', validateUserLogin, loginUser);
 router.post('/user', verifyDisplayName, verifyEmail, verifyPassword, verifyImage, createUser);
 router.get('/user', verifyToken, getUsers);
@@ -32,5 +34,6 @@ router.get('/user/:id', verifyToken, getUserId);
 router.post('/categories', verifyToken, verifyName, createCategory);
 router.get('/categories', verifyToken, getCategories);
 router.post('/post', verifyToken, verifyBlogPost, newBlogPostController);
+router.get('/post', verifyToken, getPosts);
 
 module.exports = router;
