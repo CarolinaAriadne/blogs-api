@@ -27,6 +27,8 @@ const { newBlogPostController } = require('./controllers/newBlogPost');
 
 const { getPosts } = require('./controllers/getPosts');
 
+const { getPostId } = require('./controllers/getPostId');
+
 router.post('/login', validateUserLogin, loginUser);
 router.post('/user', verifyDisplayName, verifyEmail, verifyPassword, verifyImage, createUser);
 router.get('/user', verifyToken, getUsers);
@@ -35,5 +37,6 @@ router.post('/categories', verifyToken, verifyName, createCategory);
 router.get('/categories', verifyToken, getCategories);
 router.post('/post', verifyToken, verifyBlogPost, newBlogPostController);
 router.get('/post', verifyToken, getPosts);
+router.get('/post/:id', verifyToken, getPostId);
 
 module.exports = router;
