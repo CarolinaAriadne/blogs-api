@@ -5,9 +5,10 @@ const erroHandler = (status, message) => ({
   message,
 });
 
-const changePost = async (id) => {
+const changePost = async (id, title, content, email) => {
   const idUser = await User.findByPk(id);
   console.log(idUser, 'aqui');
+  // const { id } = idUser.dataValues;
 
   const post = await BlogPost.findOne({
     where: { id },
@@ -17,10 +18,10 @@ const changePost = async (id) => {
     ],
   });
 
-  if (post.userId !== idUser.id) {
+  if (email !== idUser.dataValues.email) {
     throw erroHandler(401, 'Unauthorized user');
   }
-  return post;
+  await BlogPost.update({ title, content }, { where: { id } });
 };
 
 module.exports = {
