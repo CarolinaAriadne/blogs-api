@@ -29,6 +29,10 @@ const { getPosts } = require('./controllers/getPosts');
 
 const { getPostId } = require('./controllers/getPostId');
 
+const { changePost } = require('./controllers/ changePost');
+
+const { verifyChangePost } = require('./middlewares/validateChangePost');
+
 router.post('/login', validateUserLogin, loginUser);
 router.post('/user', verifyDisplayName, verifyEmail, verifyPassword, verifyImage, createUser);
 router.get('/user', verifyToken, getUsers);
@@ -38,5 +42,6 @@ router.get('/categories', verifyToken, getCategories);
 router.post('/post', verifyToken, verifyBlogPost, newBlogPostController);
 router.get('/post', verifyToken, getPosts);
 router.get('/post/:id', verifyToken, getPostId);
+router.put('/post/:id', verifyToken, verifyChangePost, changePost);
 
 module.exports = router;
