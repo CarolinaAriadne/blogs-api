@@ -7,7 +7,7 @@ const getPostId = async (req, res, next) => {
 
     return res.status(200).json(blogPostId);
   } catch (err) {
-    next();
+    next(err);
   }
 };
 
