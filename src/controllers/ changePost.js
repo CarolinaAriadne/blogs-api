@@ -5,6 +5,7 @@ const changePost = async (req, res, next) => {
     const { title, content } = req.body;
 
     const { email } = req.user;
+    // console.log(email, 'email controller');
 
     const { id } = req.params;
     const blogChanged = await postChange.changePost(id, title, content, email);
