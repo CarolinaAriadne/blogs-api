@@ -1,4 +1,4 @@
-Habilidades desenvolvidas no projeto:
+Habilidades compostas no projeto:
 
 Desenvolver uma API utilizando a arquitetura de software (MSC), sequelize e banco de dados MySQL.
 
