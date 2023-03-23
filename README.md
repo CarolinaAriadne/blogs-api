@@ -1,5 +1,7 @@
-Habilidades compostas no projeto:
+## Crud backend. Foi construída uma API referente a um sistema de produção de conteúdo para um blog.
 
-Desenvolvimento utilizando arquitetura de software (modelo MSC), Sequelize e banco de dados MySQL para o gerenciamento de dados. 
+Ferramentas utilizadas: NodeJS, Express, ORM Sequelize, MySQL.
 
-A API a ser construída é um sistema para a produção de conteúdo para um blog.
+
+
+
